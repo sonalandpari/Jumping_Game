@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://5uol100k8wfy"]
+
+[ext_resource type="Texture2D" uid="uid://dd55hxkxnpqjh" path="res://assets/ball.png" id="1_7s4qf"]
+[ext_resource type="Script" uid="uid://corsw3o7ypcs4" path="res://scripts/ball.gd" id="1_f7cbr"]
+[ext_resource type="Environment" uid="uid://vhxopfsioj7l" path="res://assets/styles/neon_glow_enviroment.tres" id="2_cxlvu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cxlvu"]
+radius = 120.41595
+
+[node name="ball" type="CharacterBody2D" unique_id=841294476]
+collision_layer = 2
+script = ExtResource("1_f7cbr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1713565747]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_7s4qf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=44718951]
+visible = false
+scale = Vector2(0.95, 0.95)
+shape = SubResource("CircleShape2D_cxlvu")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=996100078]
+environment = ExtResource("2_cxlvu")

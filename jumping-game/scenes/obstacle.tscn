@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c4pnybmd4b54f"]
+
+[ext_resource type="Texture2D" uid="uid://cie5ab3vcstoc" path="res://assets/obstacle.png" id="1_7ukg5"]
+[ext_resource type="Script" uid="uid://cjh0g6yqcythn" path="res://scripts/obstacle.gd" id="1_drdry"]
+[ext_resource type="Environment" uid="uid://vhxopfsioj7l" path="res://assets/styles/neon_glow_enviroment.tres" id="3_cjuko"]
+
+[node name="obstacle" type="Area2D" unique_id=490787311 groups=["obstacles"]]
+scale = Vector2(0.5, 0.5)
+collision_mask = 2
+script = ExtResource("1_drdry")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1535209198]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_7ukg5")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=348601089]
+visible = false
+light_mask = 2
+scale = Vector2(0.95, 0.95)
+polygon = PackedVector2Array(120, 116, 2, -116, -118, 114)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=585072533]
+environment = ExtResource("3_cjuko")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

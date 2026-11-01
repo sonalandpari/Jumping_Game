@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://4i517mdlfyvc"]
+
+[ext_resource type="Script" uid="uid://dsmhr0yao2wxf" path="res://scripts/game.gd" id="1_p57ef"]
+[ext_resource type="Environment" uid="uid://vhxopfsioj7l" path="res://assets/styles/neon_glow_enviroment.tres" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://dcye773ybxcxi" path="res://assets/floor.png" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://5uol100k8wfy" path="res://scenes/ball.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://c4pnybmd4b54f" path="res://scenes/obstacle.tscn" id="4_lbhrr"]
+[ext_resource type="FontFile" uid="uid://dlp1306iqdwn6" path="res://assets/Fonts/Audiowide/Audiowide-Regular.ttf" id="6_p57ef"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
+size = Vector2(1152, 48)
+
+[node name="game" type="Node" unique_id=1030076171]
+script = ExtResource("1_p57ef")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=458727453]
+environment = ExtResource("1_uwrxv")
+
+[node name="background" type="ColorRect" parent="." unique_id=1651453112]
+self_modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.007843138, 0, 0.019607844, 1)
+
+[node name="floor" type="StaticBody2D" parent="." unique_id=1572120634]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor" unique_id=900057312]
+visible = false
+position = Vector2(576, 557)
+shape = SubResource("RectangleShape2D_lbhrr")
+
+[node name="Sprite2D" type="Sprite2D" parent="floor" unique_id=1176950823]
+position = Vector2(576.00006, 557)
+scale = Vector2(1.7777778, 1)
+texture = ExtResource("2_lnu2h")
+
+[node name="ball" parent="." unique_id=841294476 instance=ExtResource("2_yqjtg")]
+position = Vector2(200, 475)
+scale = Vector2(0.4, 0.4)
+
+[node name="obstacle" parent="." unique_id=490787311 instance=ExtResource("4_lbhrr")]
+position = Vector2(1200, 520)
+collision_layer = 4
+collision_mask = 3
+
+[node name="Timer" type="Timer" parent="." unique_id=1247538486]
+autostart = true
+
+[node name="score" type="Label" parent="." unique_id=495129724]
+modulate = Color(0, 1, 1, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 800.0
+offset_top = 5.0
+offset_right = -111.0
+offset_bottom = -582.0
+theme_override_colors/font_color = Color(0, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_p57ef")
+theme_override_font_sizes/font_size = 40
+text = "SCORE: 0"
+horizontal_alignment = 3
+vertical_alignment = 1
+
+[node name="GameOver" type="Label" parent="." unique_id=902531410]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 340.0
+offset_top = 2.0
+offset_right = -341.0
+offset_bottom = -295.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.96862745, 1, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("6_p57ef")
+theme_override_font_sizes/font_size = 136
+text = "GAME
+OVER!"
+horizontal_alignment = 1
+vertical_alignment = 1
